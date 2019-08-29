@@ -1,0 +1,57 @@
+{
+  "name": "electron-sample",
+  "version": "0.2.0",
+  "main": "main.js",
+  "description": "gcp-udater example project",
+  "author": {
+    "name": "Tom Tobias",
+    "email": "dont@email.me",
+    "url": "https://example.com/"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "build --win",
+    "serve": "http-server wwwroot/ -p 8080"
+  },
+  "dependencies": {
+    "electron-log": "^3.0.5",
+    "electron-updater": "^4.0.6"
+  },
+  "devDependencies": {
+    "electron": "^5.0.1",
+    "electron-builder": "^20.28.4"
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:5050/"
+      }
+    ],
+    "appId": "com.github.blusfht.gcpupdater",
+    "mac": {
+      "category": "just.some.app",
+      "target": [
+        "zip",
+        "dmg"
+      ]
+    },
+    "linux": {
+      "category": "Utility",
+      "icon": "icons/icons",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "appImage": {
+      "systemIntegration": "doNotAsk"
+    },
+    "win": {
+      "target": "nsis",
+      "verifyUpdateCodeSignature": false,
+      "certificateFile": "./cert/testcert.pfx",
+      "certificatePassword": "thelongandwindingsecret"
+    }
+  }
+}

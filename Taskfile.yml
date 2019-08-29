@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: "2"
+
+tasks:
+  install-faker:
+    cmds:
+      - go install github.com/fsouza/fake-gcs-server
+  build-testapp:
+    dir: testapp
+    cmds:
+      - npm run dist
+  start-gcs:
+    cmds:
+      - fake-gcs-server -data ./testapp/dist
